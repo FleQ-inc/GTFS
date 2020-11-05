@@ -12,7 +12,7 @@
     <PackageIconUrl>https://raw.github.com/OsmSharp/GTFS/master/icon.bmp</PackageIconUrl>
     <PackageTags>routing,GTFS,transit</PackageTags>
     <PackageVersion>3.0.0-pre004</PackageVersion>
-    <RepositoryUrl>https://github.com/FleQ-inc/GTFSs</RepositoryUrl>
+    <RepositoryUrl>https://github.com/FleQ-inc/GTFS</RepositoryUrl>
   </PropertyGroup>
 
   <PropertyGroup>
