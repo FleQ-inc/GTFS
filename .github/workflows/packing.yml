@@ -37,6 +37,6 @@ jobs:
     - name: Pack
       run: dotnet pack src/GTFS/GTFS.csproj  --output .\artifacts --configuration Release
     - name: Add GPR Source
-      run: nuget sources Add -Name "GTFS" -Source  https://nuget.pkg.github.com/FleQ-inc/index.json -UserName FleQ-inc -Password ${{ secrets.GITHUB_TOKEN }}
+      run: nuget sources Add -Name "GTFS-Custom" -Source  https://nuget.pkg.github.com/FleQ-inc/index.json -UserName FleQ-inc -Password ${{ secrets.GITHUB_TOKEN }}
     - name: Publish
-      run: nuget push ".\artifacts\" -Source "GTFS" -SkipDuplicate 
+      run: nuget push ".\artifacts\" -Source "GTFS-Custom" -SkipDuplicate 
