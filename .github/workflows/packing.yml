@@ -23,9 +23,15 @@ jobs:
       run: dotnet build src/GTFS/GTFS.csproj --configuration Release --no-restore
     - name: Test
       run: dotnet test test/GTFS.Test/GTFS.Test.csproj --no-restore --verbosity normal
-    - name: Add GTFS Source
-      run: dotnet nuget add source https://nuget.pkg.github.com/FleQ-inc/index.json -n github -u FleQ-inc
+#     - name: Add GTFS Source
+#       run: dotnet nuget add source https://nuget.pkg.github.com/FleQ-inc/index.json -n github -u FleQ-inc
+#     - name: Pack
+#       run: dotnet pack --configuration Release
+#     - name: Publish
+#       run: dotnet nuget push "bin/Release/GTFS.1.0.0.nupkg" --source "github"
     - name: Pack
-      run: dotnet pack --configuration Release
+      run: dotnet pack src/GTFS/GTFS.csproj  --output .\artifacts --configuration Release
+    - name: Add GPR Source
+      run: nuget sources Add -Name "GTFS" -Source  https://nuget.pkg.github.com/FleQ-inc/index.json -UserName FleQ-inc -Password ${{ secrets.GITHUB_TOKEN }}
     - name: Publish
-      run: dotnet nuget push "bin/Release/GTFS.1.0.0.nupkg" --source "github"
+      run: nuget push ".\artifacts\" -Source "GTFS" -SkipDuplicate 
