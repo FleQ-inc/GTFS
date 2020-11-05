@@ -34,4 +34,4 @@ jobs:
     - name: Add GPR Source
       run: nuget sources Add -Name "GTFS" -Source  https://nuget.pkg.github.com/FleQ-inc/index.json -UserName FleQ-inc -Password ${{ secrets.GITHUB_TOKEN }}
     - name: Publish
-      run: nuget push ".\artifacts\" -Source "GTFS" -SkipDuplicate 
+      run: nuget push .\artifacts\ -Source "GTFS" -SkipDuplicate 
