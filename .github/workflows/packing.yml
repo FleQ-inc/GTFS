@@ -14,7 +14,9 @@ jobs:
     - name: Setup .NET Core SDK
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 3.1.403        
+        dotnet-version: 3.1.403
+    - name: Add Pack Source
+      run: dotnet nuget add source https://nuget.pkg.github.com/FleQ-inc/index.json -n github -u GCnaoto -p ${{ secrets.GITHUB_TOKEN }}    
     - name: Build
       run: dotnet build src/GTFS/GTFS.csproj --configuration Release
     - name: Test
