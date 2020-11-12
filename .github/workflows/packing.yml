@@ -15,13 +15,14 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.403
-    - name: Add Pack Source
-      run: dotnet nuget add source https://nuget.pkg.github.com/FleQ-inc/index.json -n github -u GCnaoto -p ${{ secrets.GITHUB_TOKEN }}    
     - name: Build
-      run: dotnet build src/GTFS/GTFS.csproj --configuration Release
+      run: dotnet build --configuration Release
+      working-directory: ./src/GTFS
     - name: Test
       run: dotnet test test/GTFS.Test/GTFS.Test.csproj --no-restore --verbosity normal
     - name: Pack
-      run: dotnet pack src/GTFS/GTFS.csproj --output .\artifacts --configuration Release
+      run: dotnet pack --configuration Release
+      working-directory: ./src/GTFS
     - name: Publish
-      run: dotnet nuget push ".\artifacts\GTFS-Custom.3.0.0-pre005.nupkg" --source "github"
+      run: dotnet nuget push "./bin/Release/GTFS-Custom.3.0.0-pre005.nupkg" --source "github"
+      working-directory: ./src/GTFS
