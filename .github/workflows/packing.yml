@@ -17,7 +17,7 @@ jobs:
         dotnet-version: 3.1.403
         
     - name: Add TestPack Source
-      run: dotnet nuget add source https://nuget.pkg.github.com/FleQ-inc/index.json -n github -u FleQ-inc -p ${{ secrets.GITHUB_TOKEN }}
+      run: dotnet nuget add source https://nuget.pkg.github.com/FleQ-inc/index.json -n gtfs_custom -u FleQ-inc -p ${{ secrets.GITHUB_TOKEN }}
     - name: Build
       run: dotnet build src/GTFS/GTFS.csproj --configuration Release
     - name: Test
@@ -25,4 +25,4 @@ jobs:
     - name: Pack
       run: dotnet pack src/GTFS/GTFS.csproj --output .\artifacts --configuration Release
     - name: Publish
-      run: dotnet nuget push ".\artifacts\" --source "github"
+      run: dotnet nuget push ".\artifacts\" --source "gtfs_custom"
