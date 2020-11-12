@@ -22,4 +22,4 @@ jobs:
     - name: Pack
       run: dotnet pack src/GTFS/GTFS.csproj --output .\artifacts --configuration Release
     - name: Publish
-      run: dotnet nuget push ".\artifacts\" --source "github"
+      run: dotnet nuget push ".\artifacts\GTFS-Custom.3.0.0-pre005.nupkg" --source "github"
