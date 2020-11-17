@@ -15,6 +15,10 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.403
+    - name: delresoce
+      run: dotnet nuget remove source github
+    - name: addresoce
+      run: dotnet nuget add source https://nuget.pkg.github.com/FleQ-inc/index.json -n github -u FleQ-inc -p ${{ secrets.GITHUB_TOKEN }}
     - name: list
       run: dotnet nuget list source
     - name: Build
@@ -26,5 +30,5 @@ jobs:
       run: dotnet pack --configuration Release
       working-directory: ./src/GTFS
     - name: Publish
-      run: dotnet nuget push "./bin/Release/GTFS-Custom.3.0.0-pre005.nupkg" --source "github"
+      run: dotnet nuget push "bin/Release/GTFS-Custom.3.0.0-pre005.nupkg" --source "github"
       working-directory: ./src/GTFS
